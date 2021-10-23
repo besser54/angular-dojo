@@ -1,0 +1,10 @@
+<h2>My Employees</h2>
+<ul>
+  <li *ngFor="let employee of employees"
+  (click)="onSelect(employee)">
+    <p>{{employee.name}} (Id: {{employee.id}}) works as {{employee.role}}</p>
+
+  </li>
+</ul>
+
+<app-employee-detail [employee]="selectedEmployee"></app-employee-detail>
