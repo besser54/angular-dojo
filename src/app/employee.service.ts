@@ -18,9 +18,20 @@ export class EmployeeService {
   constructor(private httpClient: HttpClient) { }
 
   getEmployees(): Observable<Employee[]> {
-    return this.httpClient.get<Employee[]>(this.employeeUrl + '/employees')
-      .pipe(
-        catchError(error => of([] as Employee[]))
-      );
+    return this.httpClient.get<Employee[]>(this.employeeUrl + '/employees');
+  }
+
+  deleteEmployee(id: number): Observable<void> {
+    return this.httpClient.delete<void>(this.employeeUrl + '/employees/' + id, this.httpOptions);
+  }
+
+  updateEmployee(employee: Employee): Observable<Employee> {
+    return this.httpClient.put<Employee>(this.employeeUrl + '/employees/' + employee.id,
+      employee, this.httpOptions);
+  }
+
+  createEmployee(employee: Employee): Observable<Employee> {
+    return this.httpClient.post<Employee>(this.employeeUrl + '/employees',
+      employee, this.httpOptions);
   }
 }
