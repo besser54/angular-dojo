@@ -3,29 +3,19 @@ ul {
   padding: 0;
 }
 
-p{
+li {
   display: inline-block;
-  font-size: medium;
-  padding: 0.7em;
-  border-radius: 4px;
-  color: #2c3a41;
-  background-color: #e6e6e6;
+  background-color: lightgray;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 1em;
   cursor: pointer;
 }
 
-p:hover {
-  color: white;
-  background-color:#405061;
+li:hover {
+  background-color: lightsteelblue;
 }
 
-button {
-  background-color: white;
-  border-radius: 4px;
-  cursor: pointer;
 
-}
 
-button:hover{
-  background-color: #e6e6e6;
-}
 

@@ -33,8 +33,12 @@ export class EmployeesComponent implements OnInit {
   }
 
   onCreate(): void {
-    const employee: Employee = {id: Math.floor(Math.random() * (1000 - 1)) + 1, name: 'Name', role: 'Rolle'};
-    this.employees.push(employee);
-    this.employeeService.createEmployee(employee).subscribe();
+    const employeeToSend: Employee = {name: 'Name', role: 'Rolle'};
+    this.employeeService.createEmployee(employeeToSend).subscribe(
+      employee => {
+        this.employees.push(employee);
+        this.selectedEmployee = employee;
+      }
+    );
   }
 }

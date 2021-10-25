@@ -1,13 +1,12 @@
 <div *ngIf="employee">
   <h2>Details</h2>
-  <div><span>Id: </span>{{employee.id}}</div>
   <div>
-    <label for="employee-name">Employee Name: </label>
-    <input id="employee-name" [(ngModel)]="employee.name" placeholder="name">
+    <label for="employee-name">Name: </label>
+    <input id="employee-name" [(ngModel)]="employee.name">
   </div>
   <div>
-    <label for="employee-role">Employee Role: </label>
-    <input id="employee-role" [(ngModel)]="employee.role" placeholder="role">
+    <label for="employee-role">Role: </label>
+    <input id="employee-role" [(ngModel)]="employee.role">
   </div>
   <button (click)="onSave(employee)">Save</button>
 </div>
