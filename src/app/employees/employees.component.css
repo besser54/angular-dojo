@@ -13,12 +13,11 @@ li {
 }
 
 li:hover {
-  background-color: lightsteelblue;
+  background-color: lightgreen;
 }
 
 
 li.selected {
   background-color: lightseagreen;
-
 }
 
