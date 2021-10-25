@@ -1,6 +1,6 @@
 <h2>My Employees</h2>
 <ul>
-  <li *ngFor="let employee of employees" (click)="onSelect(employee)">
+  <li *ngFor="let employee of employees" (click)="onSelect(employee)" [class.selected]="employee === selectedEmployee">
     <p>Name: {{employee.name}}</p>
     <p>Role: {{employee.role}}</p>
     <button (click)="onDelete(employee)">Delete</button>
