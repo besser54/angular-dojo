@@ -5,8 +5,8 @@
     <button (click)="onDelete(employee)">Delete</button>
   </li>
 </ul>
-<button (click)="onCreate()">Create New</button>
+<button id="createButton" (click)="onCreate()">Create New</button>
 
 
-<app-employee-detail [employee]="selectedEmployee" (close)="onSelect(undefined)"></app-employee-detail>
+<app-employee-detail [employee]="selectedEmployee" (closeOutput)="onSelect(undefined)"></app-employee-detail>
 

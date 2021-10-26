@@ -34,7 +34,6 @@ export class EmployeesComponent implements OnInit {
 
   onCreate(): void {
     const employeeToSend: Employee = {name: '', role: ''};
-    // TODO: check if Employee has values before pushing
     this.employeeService.createEmployee(employeeToSend).subscribe(
       employee => {
         this.employees.push(employee);

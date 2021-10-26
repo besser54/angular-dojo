@@ -10,7 +10,7 @@ import {EmployeeService} from '../employee.service';
 export class EmployeeDetailComponent implements OnInit {
 
   @Input() employee: Employee | undefined;
-  @Output() close: EventEmitter<any> = new EventEmitter<any>();
+  @Output() closeOutput: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private employeeService: EmployeeService) { }
 
@@ -19,7 +19,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   onSave(employee: Employee): void {
     this.employeeService.updateEmployee(employee).subscribe();
-    this.close.emit();
+    this.closeOutput.emit();
   }
 
 }
