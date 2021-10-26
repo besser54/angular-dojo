@@ -1,4 +1,3 @@
-<h2>My Employees</h2>
 <ul>
   <li *ngFor="let employee of employees" (click)="onSelect(employee)" [class.selected]="employee === selectedEmployee">
     <p>Name: {{employee.name}}</p>
