@@ -9,6 +9,7 @@ import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {EmployeeDetailComponent} from '../employee-detail/employee-detail.component';
 import {MockComponent} from 'ng-mocks';
 import {By} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
 
 describe('EmployeesComponent', () => {
   let component: EmployeesComponent;
@@ -21,7 +22,8 @@ describe('EmployeesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [EmployeesComponent, MockComponent(EmployeeDetailComponent)],
-      providers: [{provide: EmployeeService, useValue: mockedEmployeeService}]
+      providers: [{provide: EmployeeService, useValue: mockedEmployeeService}],
+      imports: [FormsModule]
     }).compileComponents();
   }));
 
@@ -66,17 +68,32 @@ describe('EmployeesComponent', () => {
     expect(mockedEmployeeService.deleteEmployee).toHaveBeenCalledWith(emp.id);
   });
 
-  it('onCreate should create empty Employee and add and select result', () => {
-    const emptyEmp: Employee = {id: 1, name: '', role: ''};
-    mockedEmployeeService.createEmployee.and.returnValue(of(emptyEmp));
+  it('onCreate should create employeeToCreate, add result and set employeeToCreate to default', () => {
+    const employeeToCreate: Employee = {name: 'A', role: 'B'};
+    component.employeeToCreate = employeeToCreate;
+    const resultEmp: Employee = {id: 1, name: employeeToCreate.name, role: employeeToCreate.role};
+    mockedEmployeeService.createEmployee.and.returnValue(of(resultEmp));
 
     component.onCreate();
 
     expect(component.employees.length).toEqual(1);
-    expect(component.employees[0]).toEqual(emptyEmp);
-    expect(component.selectedEmployee).toEqual(emptyEmp);
-    expect(mockedEmployeeService.createEmployee).toHaveBeenCalledWith({name: '', role: ''});
+    expect(component.employees[0]).toEqual(resultEmp);
+    expect(mockedEmployeeService.createEmployee).toHaveBeenCalledWith(employeeToCreate);
+    expect(component.employeeToCreate).toEqual({name: '', role: ''});
   });
+
+  it('should show name and role of employeeToCreate in inputs', fakeAsync(() => {
+    const employeeToCreate: Employee = {name: 'A', role: 'B'};
+    component.employeeToCreate = employeeToCreate;
+    fixture.detectChanges();
+    tick();
+
+    const nameInput = fixture.debugElement.nativeElement.querySelector('#createInputName');
+    const roleInput = fixture.debugElement.nativeElement.querySelector('#createInputRole');
+
+    expect(nameInput.value).toEqual(employeeToCreate.name);
+    expect(roleInput.value).toEqual(employeeToCreate.role);
+  }));
 
   it('createButton should Call onCreate', fakeAsync(() => {
     spyOn(component, 'onCreate');
@@ -84,7 +101,7 @@ describe('EmployeesComponent', () => {
     const createButton = fixture.debugElement.nativeElement.querySelector('#createButton');
     createButton.click();
     tick();
-    expect(component.onCreate).toHaveBeenCalled();
+    expect(component.onCreate).toHaveBeenCalledWith();
   }));
 
   it('should contain a valid li-Element (p with name, p with role, button) for each employee', () => {

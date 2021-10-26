@@ -1,3 +1,6 @@
+<input id="createInputName" placeholder="Name" [(ngModel)]="employeeToCreate.name">
+<input id="createInputRole" placeholder="Rolle" [(ngModel)]="employeeToCreate.role">
+<button id="createButton" (click)="onCreate()">Create</button>
 <ul>
   <li *ngFor="let employee of employees" (click)="onSelect(employee)" [class.selected]="employee === selectedEmployee">
     <p>Name: {{employee.name}}</p>
@@ -5,7 +8,6 @@
     <button (click)="onDelete(employee)">Delete</button>
   </li>
 </ul>
-<button id="createButton" (click)="onCreate()">Create New</button>
 
 
 <app-employee-detail [employee]="selectedEmployee" (closeOutput)="onSelect(undefined)"></app-employee-detail>

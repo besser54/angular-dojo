@@ -8,7 +8,7 @@ import {EmployeeService} from '../employee.service';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-
+  employeeToCreate: Employee = {name: '', role: ''};
   selectedEmployee?: Employee;
   employees: Employee[] = [];
 
@@ -33,11 +33,10 @@ export class EmployeesComponent implements OnInit {
   }
 
   onCreate(): void {
-    const employeeToSend: Employee = {name: '', role: ''};
-    this.employeeService.createEmployee(employeeToSend).subscribe(
+    this.employeeService.createEmployee(this.employeeToCreate).subscribe(
       employee => {
         this.employees.push(employee);
-        this.selectedEmployee = employee;
+        this.employeeToCreate = {name: '', role: ''};
       }
     );
   }
