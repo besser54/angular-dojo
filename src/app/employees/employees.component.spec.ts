@@ -95,6 +95,20 @@ describe('EmployeesComponent', () => {
     expect(roleInput.value).toEqual(employeeToCreate.role);
   }));
 
+  it('should modify employeeToCreate when inputs change', fakeAsync(() => {
+    const nameInput = fixture.debugElement.nativeElement.querySelector('#createInputName') as HTMLInputElement;
+    const roleInput = fixture.debugElement.nativeElement.querySelector('#createInputRole');
+
+    nameInput.value = 'Test1';
+    roleInput.value = 'Test2';
+    nameInput.dispatchEvent(new Event('input'));
+    roleInput.dispatchEvent(new Event('input'));
+    tick();
+
+    expect(component.employeeToCreate.name).toEqual('Test1');
+    expect(component.employeeToCreate.role).toEqual('Test2');
+  }));
+
   it('createButton should Call onCreate', fakeAsync(() => {
     spyOn(component, 'onCreate');
 
