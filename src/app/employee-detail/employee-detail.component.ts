@@ -17,8 +17,8 @@ export class EmployeeDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSave(employee: Employee): void {
-    this.employeeService.updateEmployee(employee).subscribe();
+  onSave(): void {
+    this.employeeService.updateEmployee(this.employee).subscribe();
     this.closeOutput.emit();
   }
 

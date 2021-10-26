@@ -38,7 +38,7 @@ describe('EmployeeDetailComponent', () => {
     mockedEmployeeService.updateEmployee.and.returnValue(of(emp));
 
     spyOn(component.closeOutput, 'emit');
-    component.onSave(emp);
+    component.onSave();
 
     expect(mockedEmployeeService.updateEmployee).toHaveBeenCalledWith(emp);
     expect(component.closeOutput.emit).toHaveBeenCalledWith();
@@ -64,7 +64,7 @@ describe('EmployeeDetailComponent', () => {
     expect(roleInput.value).toEqual(emp.role);
   }));
 
-  it('saveButton should Call onSave with current employee', fakeAsync(() => {
+  it('saveButton should Call onSave', fakeAsync(() => {
     const emp: Employee = {id: 10, name: 'A', role: 'B'};
     component.employee = emp;
     fixture.detectChanges();
@@ -74,6 +74,6 @@ describe('EmployeeDetailComponent', () => {
     const createButton = fixture.debugElement.nativeElement.querySelector('#saveButton');
     createButton.click();
     tick();
-    expect(component.onSave).toHaveBeenCalledWith(emp);
+    expect(component.onSave).toHaveBeenCalledWith();
   }));
 });
