@@ -95,7 +95,7 @@ describe('EmployeesComponent', () => {
     expect(roleInput.value).toEqual(employeeToCreate.role);
   }));
 
-  it('should modify employeeToCreate when inputs change', fakeAsync(() => {
+  it('should update employeeToCreate when inputs change', fakeAsync(() => {
     const nameInput = fixture.debugElement.nativeElement.querySelector('#createInputName') as HTMLInputElement;
     const roleInput = fixture.debugElement.nativeElement.querySelector('#createInputRole');
 

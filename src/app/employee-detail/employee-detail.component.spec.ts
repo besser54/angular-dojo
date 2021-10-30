@@ -64,7 +64,7 @@ describe('EmployeeDetailComponent', () => {
     expect(roleInput.value).toEqual(emp.role);
   }));
 
-  it('should modify employee when inputs change', fakeAsync(() => {
+  it('should update employee when inputs change', fakeAsync(() => {
     const emp: Employee = {id: 10, name: 'A', role: 'B'};
     component.employee = emp;
     fixture.detectChanges();

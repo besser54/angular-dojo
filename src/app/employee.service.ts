@@ -10,10 +10,6 @@ export class EmployeeService {
 
   private employeeUrl = 'http://localhost:8080/api/v1';
 
-  httpOptions = {
-    headers: new HttpHeaders({ Accept: 'application/json' })
-  };
-
   constructor(private httpClient: HttpClient) { }
 
   getEmployees(): Observable<Employee[]> {
@@ -21,16 +17,15 @@ export class EmployeeService {
   }
 
   deleteEmployee(id: number): Observable<void> {
-    return this.httpClient.delete<void>(this.employeeUrl + '/employees/' + id, this.httpOptions);
+    return this.httpClient.delete<void>(this.employeeUrl + '/employees/' + id);
   }
 
   updateEmployee(employee: Employee): Observable<Employee> {
     return this.httpClient.put<Employee>(this.employeeUrl + '/employees/' + employee.id,
-      employee, this.httpOptions);
+      employee);
   }
 
   createEmployee(employee: Employee): Observable<Employee> {
-    return this.httpClient.post<Employee>(this.employeeUrl + '/employees',
-      employee, this.httpOptions);
+    return this.httpClient.post<Employee>(this.employeeUrl + '/employees', employee);
   }
 }
