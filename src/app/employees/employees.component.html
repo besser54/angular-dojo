@@ -1,5 +1,5 @@
 <input id="createInputName" placeholder="Name" [(ngModel)]="employeeToCreate.name">
-<input id="createInputRole" placeholder="Rolle" [(ngModel)]="employeeToCreate.role">
+<input id="createInputRole" placeholder="Role" [(ngModel)]="employeeToCreate.role">
 <button id="createButton" (click)="onCreate()">Create</button>
 <ul>
   <li *ngFor="let employee of employees" (click)="onSelect(employee)" [class.selected]="employee === selectedEmployee">
