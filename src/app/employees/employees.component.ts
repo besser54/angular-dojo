@@ -15,29 +15,22 @@ export class EmployeesComponent implements OnInit {
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.getEmployees();
+    // TODO
   }
 
   onSelect(employee: Employee): void {
-    this.selectedEmployee = employee;
+    // TODO
   }
 
   getEmployees(): void {
-    this.employeeService.getEmployees()
-      .subscribe(employees => this.employees = employees);
+    // TODO
   }
 
   onDelete(employee: Employee): void {
-    this.employees = this.employees.filter(e => e !== employee);
-    this.employeeService.deleteEmployee(employee.id).subscribe();
+    // TODO
   }
 
   onCreate(): void {
-    this.employeeService.createEmployee(this.employeeToCreate).subscribe(
-      employee => {
-        this.employees.push(employee);
-        this.employeeToCreate = {name: '', role: ''};
-      }
-    );
+    // TODO
   }
 }

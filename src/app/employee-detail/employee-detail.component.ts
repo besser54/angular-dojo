@@ -18,8 +18,7 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   onSave(): void {
-    this.employeeService.updateEmployee(this.employee).subscribe();
-    this.closeOutput.emit();
+    // TODO
   }
 
 }

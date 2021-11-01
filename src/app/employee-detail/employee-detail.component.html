@@ -1,12 +1,13 @@
-<div *ngIf="employee">
+<!--TODO-->
+<div>
   <h2>Edit details</h2>
   <div>
     <label for="employee-name">Name: </label>
-    <input id="employee-name" [(ngModel)]="employee.name">
+    <input id="employee-name">
   </div>
   <div>
     <label for="employee-role">Role: </label>
-    <input id="employee-role" [(ngModel)]="employee.role">
+    <input id="employee-role">
   </div>
-  <button id="saveButton" (click)="onSave()">Save</button>
+  <button id="saveButton">Save</button>
 </div>

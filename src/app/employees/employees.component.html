@@ -1,14 +1,15 @@
-<input id="createInputName" placeholder="Name" [(ngModel)]="employeeToCreate.name">
-<input id="createInputRole" placeholder="Role" [(ngModel)]="employeeToCreate.role">
-<button id="createButton" (click)="onCreate()">Create</button>
+<!--TODO-->
+<input id="createInputName" placeholder="Name">
+<input id="createInputRole" placeholder="Role">
+<button id="createButton">Create</button>
 <ul>
-  <li *ngFor="let employee of employees" (click)="onSelect(employee)" [class.selected]="employee === selectedEmployee">
-    <p>Name: {{employee.name}}</p>
-    <p>Role: {{employee.role}}</p>
-    <button (click)="onDelete(employee)">Delete</button>
+  <li>
+    <p>Name: Name</p>
+    <p>Role: Rolle</p>
+    <button>Delete</button>
   </li>
 </ul>
 
 
-<app-employee-detail [employee]="selectedEmployee" (closeOutput)="onSelect(undefined)"></app-employee-detail>
+<app-employee-detail></app-employee-detail>
 

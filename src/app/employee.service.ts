@@ -1,31 +1,32 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {Employee} from './employee';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  private employeeUrl = 'http://localhost:8080/api/v1';
-
   constructor(private httpClient: HttpClient) { }
 
   getEmployees(): Observable<Employee[]> {
-    return this.httpClient.get<Employee[]>(this.employeeUrl + '/employees');
+    // TODO
+    return null;
   }
 
   deleteEmployee(id: number): Observable<void> {
-    return this.httpClient.delete<void>(this.employeeUrl + '/employees/' + id);
+    // TODO
+    return null;
   }
 
   updateEmployee(employee: Employee): Observable<Employee> {
-    return this.httpClient.put<Employee>(this.employeeUrl + '/employees/' + employee.id,
-      employee);
+    // TODO
+    return null;
   }
 
   createEmployee(employee: Employee): Observable<Employee> {
-    return this.httpClient.post<Employee>(this.employeeUrl + '/employees', employee);
+    // TODO
+    return null;
   }
 }
